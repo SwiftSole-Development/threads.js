@@ -222,8 +222,8 @@ function initTinyWorker(): ImplementationExport {
   const terminateWorkersAndMaster = () => {
     // we should terminate all workers and then gracefully shutdown self process
     Promise.all(allWorkers.map(worker => worker.terminate())).then(
-      () => process.exit(0),
-      () => process.exit(1),
+      //() => process.exit(0),
+      //() => process.exit(1),
     )
     allWorkers = []
   }

@@ -170,7 +170,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
     })
 
     try {
-      const returnValue = await task.run(await worker.init)
+      const returnValue = await task.run(({ ...await worker.init, id: workerID } as unknown) as ThreadType)
 
       this.debug(`Task #${task.id} completed successfully`)
       this.eventSubject.next({
